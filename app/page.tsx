@@ -265,6 +265,41 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="relative z-10 border-t border-zinc-800/80 px-6 py-20 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="rounded-3xl border border-zinc-800 bg-zinc-950/60 p-6 shadow-[0_0_80px_rgba(56,189,248,0.08)] md:p-8"
+          >
+            <p className="text-xs uppercase tracking-[0.34em] text-zinc-500 md:text-sm">
+              Creative AI & Music
+            </p>
+            <h3 className="mt-4 text-2xl font-semibold tracking-tight text-zinc-100 md:text-4xl">
+              The Static Frames
+            </h3>
+            <p className="mt-4 max-w-3xl text-base leading-8 text-zinc-300 md:text-lg">
+              The Static Frames is my AI-assisted indie rock project, combining
+              songwriting, digital production, and creative experimentation.
+            </p>
+
+            <div className="mt-8 overflow-hidden rounded-2xl border border-zinc-800/90 bg-black/30">
+              <iframe
+                src="https://open.spotify.com/embed/track/0Kcuf7JLHw3wIKQQolSxkl?utm_source=generator"
+                width="100%"
+                height="352"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                title="Spotify player for The Static Frames"
+                className="block w-full"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       <section
         id="contact"
         className="relative z-10 border-t border-zinc-800/80 px-6 py-16 md:py-20"
@@ -300,6 +335,30 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <footer className="relative z-10 border-t border-zinc-800/80 px-6 py-8">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 text-sm text-zinc-400">
+          <p>© {new Date().getFullYear()} CB Digital Lab</p>
+          <div className="flex items-center gap-5">
+            <a
+              href="https://www.linkedin.com/in/christianblecke"
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-white"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/Bleeecke"
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-white"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
