@@ -13,7 +13,7 @@ export default function Home() {
       "Browser-based survival prototype focused on resources, player states and experimental gameplay systems.",
     link: "https://6a099b4dde7fd81f852fd866--spiffy-choux-827a9a.netlify.app/",
     button: "Play Demo",
-    image: "/images/game.png",
+    image: "/images/Game.png",
   },
   {
     title: "The Static Frames",
@@ -21,7 +21,7 @@ export default function Home() {
       "AI-assisted indie rock project exploring songwriting, branding and digital music production.",
     link: "https://open.spotify.com/artist/75KarhA4wRynXeYROkwD9E",
     button: "Open Spotify",
-    image: "/images/bandspotify.png",
+    image: "/images/BandSpotify.png",
   },
   {
     title: "Leasing Automation Concepts",
@@ -29,7 +29,7 @@ export default function Home() {
       "Workflow automation concepts for leasing systems, provider portals and process optimization.",
     link: "#",
     button: "In Progress",
-    image: "/images/leasing.png",
+    image: "/images/Leasing.png",
   },
 ];
 
