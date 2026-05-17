@@ -40,18 +40,40 @@ export default function Home() {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.06)_1px,transparent_1px)] bg-[size:42px_42px] [mask-image:radial-gradient(ellipse_at_top,black_55%,transparent_100%)]" />
 
       <section className="relative z-10 border-b border-zinc-800/70">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-6">
           <h1 className="text-base font-semibold uppercase tracking-[0.28em] text-zinc-100 md:text-lg">
             CB Digital Lab
           </h1>
 
-          <nav className="flex gap-6 text-xs uppercase tracking-[0.22em] text-zinc-400 md:text-sm">
+          <nav className="flex flex-wrap items-center gap-6 text-xs uppercase tracking-[0.22em] text-zinc-400 md:text-sm">
             <a href="#projects" className="transition-colors hover:text-white">
               Projects
             </a>
 
             <a href="#about" className="transition-colors hover:text-white">
               About
+            </a>
+
+            <a href="#contact" className="transition-colors hover:text-white">
+              Contact
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/christianblecke"
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-white"
+            >
+              LinkedIn
+            </a>
+
+            <a
+              href="https://github.com/Bleeecke"
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-white"
+            >
+              GitHub
             </a>
           </nav>
         </div>
@@ -174,22 +196,108 @@ export default function Home() {
         id="about"
         className="relative z-10 border-t border-zinc-800/80 px-6 py-20 md:py-24"
       >
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[320px_1fr] lg:items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+            viewport={{ once: true }}
+            className="relative mx-auto h-[380px] w-full max-w-[320px] overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-950/70"
+          >
+            <Image
+              src="/images/christian.jpg"
+              alt="Portrait of Christian Blecke"
+              fill
+              sizes="(max-width: 1024px) 100vw, 320px"
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
+          </motion.div>
+
+          <div>
+            <p className="text-xs uppercase tracking-[0.34em] text-zinc-500 md:text-sm">
+              About
+            </p>
+
+            <h3 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-100 md:text-5xl">
+              I build digital concepts where process meets creative AI.
+            </h3>
+
+            <p className="mt-8 text-base leading-8 text-zinc-300 md:text-lg">
+              I work at the intersection of workflow automation, digital
+              prototyping, and creative AI projects.
+            </p>
+
+            <p className="mt-5 text-base leading-8 text-zinc-300 md:text-lg">
+              With a background in team leadership and operational processes in
+              the bicycle leasing industry, I focus on understanding complex
+              workflows, identifying friction points, and turning ideas into
+              visible, testable concepts.
+            </p>
+
+            <p className="mt-5 text-base leading-8 text-zinc-300 md:text-lg">
+              I do not position myself as a classical software developer. I
+              combine AI-assisted development, process thinking, and
+              experimentation to quickly build interfaces, workflows, and
+              digital concepts that can be tested and improved.
+            </p>
+
+            <p className="mt-5 text-base leading-8 text-zinc-300 md:text-lg">
+              My projects range from leasing automation concepts and
+              browser-based games to AI-supported music production and modern
+              web experiences.
+            </p>
+
+            <div className="mt-8 rounded-2xl border border-zinc-800 bg-zinc-950/60 p-6">
+              <p className="text-xs uppercase tracking-[0.28em] text-zinc-400">
+                Currently focused on
+              </p>
+              <ul className="mt-4 grid gap-2 text-sm text-zinc-200 md:grid-cols-2 md:text-base">
+                <li>AI-assisted workflow design</li>
+                <li>Process automation</li>
+                <li>Digital product prototyping</li>
+                <li>Interactive systems</li>
+                <li>Creative AI projects</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="contact"
+        className="relative z-10 border-t border-zinc-800/80 px-6 py-16 md:py-20"
+      >
+        <div className="mx-auto max-w-7xl rounded-3xl border border-zinc-800 bg-zinc-950/55 p-8 md:p-10">
           <p className="text-xs uppercase tracking-[0.34em] text-zinc-500 md:text-sm">
-            About
+            Contact
           </p>
-
-          <h3 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-100 md:text-5xl">
-            Process thinking meets creative AI.
+          <h3 className="mt-4 text-2xl font-semibold tracking-tight text-zinc-100 md:text-4xl">
+            Connect with me
           </h3>
-
-          <p className="mt-8 text-base leading-8 text-zinc-300 md:text-lg">
-            I work at the intersection of workflow automation,
-            digital prototyping and creative technology.
-            My focus is not traditional software engineering,
-            but understanding systems, optimizing processes
-            and rapidly building ideas into visible concepts.
+          <p className="mt-4 max-w-2xl text-base leading-8 text-zinc-300 md:text-lg">
+            If you want to discuss workflow optimization, AI-assisted product
+            concepts, or creative digital experiments, feel free to reach out.
           </p>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <a
+              href="https://www.linkedin.com/in/christianblecke"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-zinc-700 bg-zinc-900/70 px-6 py-3 text-sm font-medium text-zinc-100 transition-all hover:border-zinc-500 hover:bg-zinc-800"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/Bleeecke"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-zinc-700 px-6 py-3 text-sm font-medium text-zinc-200 transition-all hover:border-zinc-500 hover:bg-zinc-900"
+            >
+              GitHub
+            </a>
+          </div>
         </div>
       </section>
     </main>
