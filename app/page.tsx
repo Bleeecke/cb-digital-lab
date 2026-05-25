@@ -37,6 +37,7 @@ const projects = [
 
 export default function Home() {
   const [pointer, setPointer] = useState({ x: 50, y: 10 });
+  const [issOpen, setIssOpen] = useState(false);
   const rafRef = useRef<number | null>(null);
   const mainRef = useRef<HTMLElement | null>(null);
 
@@ -163,36 +164,6 @@ export default function Home() {
         </motion.div>
       </section>
 
-      
-
-            <section className="relative z-10 border-t border-zinc-800/80 px-6 py-20 md:py-24">
-        <div className="mx-auto max-w-7xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="rounded-3xl border border-zinc-800/90 bg-zinc-950/65 p-6 shadow-[0_0_85px_rgba(56,189,248,0.09)] backdrop-blur-xl md:p-8"
-          >
-            <p className="text-xs uppercase tracking-[0.34em] text-zinc-500 md:text-sm">
-              Live Orbital Systems
-            </p>
-            <h3 className="mt-4 text-2xl font-semibold tracking-tight text-zinc-100 md:text-4xl">
-              Live Orbital Systems
-            </h3>
-            <p className="mt-4 max-w-3xl text-base leading-8 text-zinc-300 md:text-lg">
-              Real-time orbital telemetry powered by public ISS data streams.
-            </p>
-            <p className="mt-4 max-w-4xl text-sm leading-7 text-zinc-400 md:text-base">
-              This module demonstrates how I work: combining public data, AI-assisted development, and
-              process-driven thinking to build reliable systems. The goal is not only visual output, but a
-              robust data pipeline from source validation to live presentation.
-            </p>
-            <IssMap />
-          </motion.div>
-        </div>
-      </section>
-
       <section
         id="projects"
         className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:py-28"
@@ -250,6 +221,42 @@ export default function Home() {
             </motion.div>
           ))}
         </div>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.36 }}
+          viewport={{ once: true }}
+          className="mt-6 rounded-3xl border border-zinc-800 bg-zinc-950/65 p-5 backdrop-blur-md md:p-6"
+        >
+          <div className="rounded-2xl border border-zinc-700/70 bg-black/30 p-4">
+            <span className="rounded-full border border-zinc-600/70 bg-black/60 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-zinc-200">
+              Live
+            </span>
+            <div className="relative mt-4 h-44 overflow-hidden rounded-xl border border-zinc-800/90 bg-[radial-gradient(circle_at_30%_30%,rgba(56,189,248,0.2),transparent_45%),linear-gradient(to_bottom,rgba(2,6,23,0.95),rgba(3,7,18,0.8))]">
+              <Image
+                src="/globe.svg"
+                alt="Orbital systems preview"
+                width={120}
+                height={120}
+                className="absolute right-4 top-4 opacity-70"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:24px_24px]" />
+              <div className="absolute left-5 top-1/2 h-px w-[70%] -translate-y-1/2 bg-gradient-to-r from-cyan-300/70 to-transparent" />
+              <div className="absolute left-[58%] top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-100 bg-cyan-300 shadow-[0_0_14px_rgba(34,211,238,0.9)]" />
+            </div>
+            <h4 className="mt-4 text-xl font-semibold text-zinc-100 md:text-2xl">Live Orbital Systems</h4>
+            <p className="mt-3 text-sm leading-7 text-zinc-400">
+              Real-time ISS telemetry as a compact systems preview.
+            </p>
+            <button
+              onClick={() => setIssOpen((v) => !v)}
+              className="mt-4 rounded-xl border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-200 transition-all hover:border-zinc-500 hover:bg-zinc-900"
+            >
+              {issOpen ? "Hide Preview" : "Open Preview"}
+            </button>
+          </div>
+          {issOpen && <IssMap />}
+        </motion.div>
       </section>
 
       <section
