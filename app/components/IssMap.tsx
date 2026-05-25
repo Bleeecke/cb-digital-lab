@@ -9,12 +9,11 @@ type IssApiResponse = {
   longitude: number;
   altitude: number;
   velocity: number;
-  visibility: string;
-  timestamp: number;
+  visibility?: string;
+  timestamp?: number;
 };
 
 type Coord = [number, number];
-const ISS_API = "https://api.wheretheiss.at/v1/satellites/25544";
 
 function wrapLon(lon: number): number {
   let v = lon;
@@ -114,34 +113,40 @@ export default function IssMap() {
 
     const tick = async () => {
       try {
-        const response = await fetch(ISS_API, { cache: "no-store" });
-        if (!response.ok) throw new Error("ISS feed unavailable");
-        const data = (await response.json()) as IssApiResponse;
+        const orbitResponse = await fetch("/api/iss-orbit", { cache: "no-store" });
+        if (!orbitResponse.ok) {
+          setError("Fresh NASA-aligned orbit data unavailable right now.");
+          return;
+        }
+        const orbitJson = (await orbitResponse.json()) as {
+          past?: Coord[];
+          forecast?: Coord[];
+          nowState?: { altitudeKm: number; velocityKmh: number };
+        };
+        const forecastTrack = (orbitJson.forecast ?? []).map(([lon, lat]) => [wrapLon(lon), lat] as Coord);
+        const pastTrack = (orbitJson.past ?? []).map(([lon, lat]) => [wrapLon(lon), lat] as Coord);
+        if (forecastTrack.length === 0) throw new Error("No orbit forecast");
+        const nowPoint: Coord = forecastTrack[0];
         if (!mounted) return;
 
-        setIssData(data);
+        setIssData({
+          latitude: nowPoint[1],
+          longitude: nowPoint[0],
+          altitude: orbitJson.nowState?.altitudeKm ?? 0,
+          velocity: orbitJson.nowState?.velocityKmh ?? 0,
+        });
         setError(null);
-
-        const nowPoint: Coord = [wrapLon(data.longitude), data.latitude];
         const map = mapRef.current;
         if (!map || !map.isStyleLoaded()) return;
 
-        trailRef.current = [...trailRef.current, nowPoint].slice(-2200);
+        trailRef.current = pastTrack.length > 0 ? pastTrack : [...trailRef.current, nowPoint].slice(-2200);
         const trailSource = map.getSource("iss-trail") as GeoJSONSource | undefined;
         trailSource?.setData({ type: "FeatureCollection", features: lineFeatures(trailRef.current) });
 
         markerRef.current?.setLngLat(nowPoint);
 
-        try {
-          const orbitResponse = await fetch("/api/iss-orbit", { cache: "no-store" });
-          const orbitJson = (await orbitResponse.json()) as { forecast?: Coord[] };
-          const forecastTrack = (orbitJson.forecast ?? []).map(([lon, lat]) => [wrapLon(lon), lat] as Coord);
-          const forecastSource = map.getSource("iss-forecast") as GeoJSONSource | undefined;
-          forecastSource?.setData({ type: "FeatureCollection", features: lineFeatures([nowPoint, ...forecastTrack]) });
-        } catch {
-          const forecastSource = map.getSource("iss-forecast") as GeoJSONSource | undefined;
-          forecastSource?.setData({ type: "FeatureCollection", features: [] });
-        }
+        const forecastSource = map.getSource("iss-forecast") as GeoJSONSource | undefined;
+        forecastSource?.setData({ type: "FeatureCollection", features: lineFeatures(forecastTrack) });
 
         map.easeTo({ center: nowPoint as LngLatLike, duration: 1000, essential: true });
       } catch {

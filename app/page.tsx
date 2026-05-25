@@ -272,6 +272,11 @@ export default function Home() {
             <p className="mt-4 max-w-3xl text-base leading-8 text-zinc-300 md:text-lg">
               Real-time orbital telemetry powered by public ISS data streams.
             </p>
+            <p className="mt-4 max-w-4xl text-sm leading-7 text-zinc-400 md:text-base">
+              This module demonstrates how I work: combining public data, AI-assisted development, and
+              process-driven thinking to build reliable systems. The goal is not only visual output, but a
+              robust data pipeline from source validation to live presentation.
+            </p>
             <IssMap />
           </motion.div>
         </div>
