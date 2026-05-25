@@ -35,39 +35,6 @@ const projects = [
   },
 ];
 
-const workflowSteps = [
-  {
-    title: "Idea",
-    description:
-      "A problem, concept or rough opportunity becomes the starting point.",
-  },
-  {
-    title: "Workflow Analysis",
-    description:
-      "I break down the process, identify friction points and define what should be improved.",
-  },
-  {
-    title: "AI-assisted Prototyping",
-    description:
-      "I use tools like Codex, Claude and ChatGPT to move quickly from concept to interface, logic or prototype.",
-  },
-  {
-    title: "Rapid Iteration",
-    description:
-      "I test, adjust and refine the result instead of waiting for a perfect first version.",
-  },
-  {
-    title: "Deployment",
-    description:
-      "I ship the prototype using modern tools like GitHub and Vercel.",
-  },
-  {
-    title: "Refinement",
-    description:
-      "I improve the result based on feedback, usage and new ideas.",
-  },
-];
-
 export default function Home() {
   const [pointer, setPointer] = useState({ x: 50, y: 10 });
   const rafRef = useRef<number | null>(null);
@@ -196,63 +163,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <section className="relative z-10 border-y border-zinc-800/70 px-6 py-20 md:py-24">
-        <div className="mx-auto max-w-7xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="rounded-3xl border border-zinc-800/80 bg-zinc-950/60 p-6 shadow-[0_0_90px_rgba(56,189,248,0.06)] backdrop-blur-xl md:p-8"
-          >
-            <p className="text-xs uppercase tracking-[0.3em] text-zinc-500">
-              Workflow
-            </p>
-            <h3 className="mt-4 text-2xl font-semibold tracking-tight text-zinc-100 md:text-4xl">
-              How I move from idea to shipped result
-            </h3>
-            <p className="mt-5 max-w-3xl text-base leading-8 text-zinc-300 md:text-lg">
-              I combine process thinking, AI-assisted development and fast
-              iteration to turn ideas into visible, testable digital
-              prototypes.
-            </p>
-
-            <div className="mt-10 grid gap-5 lg:grid-cols-6 lg:gap-0">
-              {workflowSteps.map((step, index) => (
-                <div key={step.title} className="relative lg:px-3">
-                  <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.12, duration: 0.45 }}
-                    viewport={{ once: true }}
-                    className="relative h-full rounded-2xl border border-zinc-800 bg-zinc-900/65 p-5"
-                  >
-                    <div className="mb-4 flex items-center gap-3">
-                      <span className="inline-flex h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.95)]" />
-                      <span className="text-[11px] uppercase tracking-[0.2em] text-zinc-500">
-                        Step {index + 1}
-                      </span>
-                    </div>
-                    <h4 className="text-lg font-semibold text-zinc-100">
-                      {step.title}
-                    </h4>
-                    <p className="mt-3 text-sm leading-7 text-zinc-300">
-                      {step.description}
-                    </p>
-                  </motion.div>
-
-                  {index < workflowSteps.length - 1 && (
-                    <>
-                      <span className="absolute -bottom-3 left-1/2 h-3 w-px -translate-x-1/2 bg-zinc-700/80 lg:hidden" />
-                      <span className="absolute right-0 top-1/2 hidden h-px w-3 -translate-y-1/2 bg-zinc-700/80 lg:block" />
-                    </>
-                  )}
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      
 
             <section className="relative z-10 border-t border-zinc-800/80 px-6 py-20 md:py-24">
         <div className="mx-auto max-w-7xl">
