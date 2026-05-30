@@ -9,11 +9,11 @@ const projects = [
   {
     title: "Interactive Survival Game",
     description:
-      "Browser-based survival prototype focused on resources, player states and experimental gameplay systems.",
-    link: "https://6a099b4dde7fd81f852fd866--spiffy-choux-827a9a.netlify.app/",
+      "Browser-based survival game focused on resources, player states, and experimental gameplay systems.",
+    link: "https://survival.vercel.app",
     button: "Play Demo",
     image: "/images/game.png",
-    status: "Prototype",
+    status: "Live",
   },
   {
     title: "The Static Frames",
