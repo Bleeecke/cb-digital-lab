@@ -10,7 +10,7 @@ const projects = [
     title: "Interactive Survival Game",
     description:
       "Browser-based survival game focused on resources, player states, and experimental gameplay systems.",
-    link: "https://survival.vercel.app",
+    link: "https://survival-1a4s0jcdu-christian-blecke-s-projects.vercel.app",
     button: "Play Demo",
     image: "/images/game.png",
     status: "Live",
