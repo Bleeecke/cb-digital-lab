@@ -170,11 +170,11 @@ export default function Home() {
           transition={{ duration: 0.75 }}
           className="max-w-5xl text-4xl font-semibold leading-[1.05] tracking-tight text-zinc-100 sm:text-5xl lg:text-7xl"
         >
-          Building AI-native systems and
+          Creating digital products and
           <br className="hidden md:block" />
-          digital products with
+          interactive systems that connect
           <br className="hidden md:block" />
-          cinematic precision.
+          technical execution with creative experimentation.
         </motion.h2>
 
         <motion.p
@@ -183,8 +183,8 @@ export default function Home() {
           transition={{ duration: 0.95 }}
           className="mt-8 max-w-2xl text-base leading-8 text-zinc-300 md:text-lg"
         >
-          Combining workflow automation, experimental interfaces,
-          and creative AI to move ideas from concept to product fast.
+          My projects are also a way to test AI, refine processes, and explore
+          new techniques in a practical way.
         </motion.p>
 
         <motion.div
@@ -197,13 +197,13 @@ export default function Home() {
             href="#projects"
             className="rounded-full border border-zinc-700 bg-zinc-900/70 px-6 py-3 text-sm font-medium text-zinc-100 transition-all hover:border-zinc-500 hover:bg-zinc-800"
           >
-            View Projects
+            Explore Work
           </a>
           <a
             href="#about"
             className="rounded-full border border-zinc-800 px-6 py-3 text-sm font-medium text-zinc-300 transition-colors hover:text-white"
           >
-            About Me
+            About the Approach
           </a>
         </motion.div>
       </section>
@@ -272,61 +272,43 @@ export default function Home() {
           viewport={{ once: true }}
           className="mt-6 rounded-3xl border border-zinc-800 bg-zinc-950/65 p-5 backdrop-blur-md md:p-6"
         >
-          <div className="rounded-2xl border border-zinc-700/70 bg-black/30 p-4">
-            <span className="rounded-full border border-zinc-600/70 bg-black/60 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-zinc-200">
-              Live
-            </span>
-            <div className="relative mt-4 h-44 overflow-hidden rounded-xl border border-zinc-800/90 bg-[radial-gradient(circle_at_30%_30%,rgba(56,189,248,0.2),transparent_45%),linear-gradient(to_bottom,rgba(2,6,23,0.95),rgba(3,7,18,0.8))]">
-              <Image
-                src="/globe.svg"
-                alt="Orbital systems preview"
-                width={120}
-                height={120}
-                className="absolute right-4 top-4 opacity-70"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:24px_24px]" />
-              <div className="absolute left-5 top-1/2 h-px w-[70%] -translate-y-1/2 bg-gradient-to-r from-cyan-300/70 to-transparent" />
-              <div className="absolute left-[58%] top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-100 bg-cyan-300 shadow-[0_0_14px_rgba(34,211,238,0.9)]" />
+          <div className="grid gap-6 lg:grid-cols-2">
+            <div className="rounded-3xl border border-zinc-800 bg-zinc-950/65 p-5 backdrop-blur-md md:p-6">
+              <span className="rounded-full border border-zinc-600/70 bg-black/60 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-zinc-200">
+                Live
+              </span>
+              <div className="relative mt-4 h-52 overflow-hidden rounded-2xl border border-zinc-800/90 bg-[radial-gradient(circle_at_30%_30%,rgba(56,189,248,0.2),transparent_45%),linear-gradient(to_bottom,rgba(2,6,23,0.95),rgba(3,7,18,0.8))]">
+                <Image
+                  src="/globe.svg"
+                  alt="Orbital systems preview"
+                  width={120}
+                  height={120}
+                  className="absolute right-4 top-4 opacity-70"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:24px_24px]" />
+                <div className="absolute left-5 top-1/2 h-px w-[70%] -translate-y-1/2 bg-gradient-to-r from-cyan-300/70 to-transparent" />
+                <div className="absolute left-[58%] top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-100 bg-cyan-300 shadow-[0_0_14px_rgba(34,211,238,0.9)]" />
+              </div>
+              <h4 className="mt-4 text-xl font-semibold text-zinc-100 md:text-2xl">
+                Live Orbital Systems
+              </h4>
+              <p className="mt-3 text-sm leading-7 text-zinc-400">
+                Real-time ISS telemetry as a compact systems preview.
+              </p>
+              <button
+                onClick={() => setIssOpen((v) => !v)}
+                className="mt-4 rounded-xl border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-200 transition-all hover:border-zinc-500 hover:bg-zinc-900"
+              >
+                {issOpen ? "Hide Preview" : "Open Preview"}
+              </button>
+              {issOpen && <div className="mt-5"><IssMap /></div>}
             </div>
-            <h4 className="mt-4 text-xl font-semibold text-zinc-100 md:text-2xl">Live Orbital Systems</h4>
-            <p className="mt-3 text-sm leading-7 text-zinc-400">
-              Real-time ISS telemetry as a compact systems preview.
-            </p>
-            <button
-              onClick={() => setIssOpen((v) => !v)}
-              className="mt-4 rounded-xl border border-zinc-700 px-4 py-2 text-sm font-medium text-zinc-200 transition-all hover:border-zinc-500 hover:bg-zinc-900"
-            >
-              {issOpen ? "Hide Preview" : "Open Preview"}
-            </button>
+
+            <div className="rounded-3xl border border-cyan-400/20 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.14),transparent_42%),linear-gradient(180deg,rgba(8,15,28,0.96),rgba(3,7,18,0.92))] p-5 shadow-[0_0_80px_rgba(34,211,238,0.08)] backdrop-blur-md md:p-6">
+              <MusicPlayer songs={songs} />
+            </div>
           </div>
-          {issOpen && <IssMap />}
         </motion.div>
-      </section>
-
-      <section className="relative z-10 border-t border-zinc-800/80 px-6 py-20 md:py-24">
-        <div className="mx-auto max-w-7xl">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <p className="text-xs uppercase tracking-[0.34em] text-zinc-500 md:text-sm">
-              Music
-            </p>
-            <h3 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-100 md:text-5xl">
-              The Static Frames songs
-            </h3>
-            <p className="mt-4 max-w-3xl text-base leading-8 text-zinc-300 md:text-lg">
-              Listen to unreleased tracks directly in the browser and download the
-              files if you want to keep them.
-            </p>
-          </motion.div>
-
-          <div className="mt-8">
-            <MusicPlayer songs={songs} />
-          </div>
-        </div>
       </section>
 
       <section
