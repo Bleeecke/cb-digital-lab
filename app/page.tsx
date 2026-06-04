@@ -4,13 +4,14 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import IssMap from "./components/IssMap";
+import MusicPlayer, { type Song } from "./components/MusicPlayer";
 
 const projects = [
   {
     title: "Interactive Survival Game",
     description:
       "Browser-based survival game focused on resources, player states, and experimental gameplay systems.",
-    link: "https://survival-christian-blecke-s-projects.vercel.app",
+    link: "https://survival.vercel.app",
     button: "Play Demo",
     image: "/images/game.png",
     status: "Live",
@@ -32,6 +33,49 @@ const projects = [
     button: "In Progress",
     image: "/images/leasing.png",
     status: "In Progress",
+  },
+];
+
+const songs: Song[] = [
+  {
+    title: "Bloom While It Burns",
+    fileName: "Bloom While It Burns.mp3",
+    description: "Atmospheric track with a slow build and an emotional release.",
+  },
+  {
+    title: "Days Like These",
+    fileName: "Days Like These.mp3",
+    description: "Warm, reflective song with a straightforward indie rock feel.",
+  },
+  {
+    title: "East of Innocence",
+    fileName: "East of Innocence.mp3",
+    description: "Broader arrangement with a cinematic, driving energy.",
+  },
+  {
+    title: "Greta",
+    fileName: "Greta.mp3",
+    description: "Compact and melodic track with a focused chorus hook.",
+  },
+  {
+    title: "Nice Girls Have Never Changed the World",
+    fileName: "Nice Girls Have Never Changed the World (Remastered).mp3",
+    description: "Remastered version with a more polished production finish.",
+  },
+  {
+    title: "Pull Me Back In",
+    fileName: "Pull Me Back In.mp3",
+    description: "Direct, melodic song with a stronger pop-rock structure.",
+  },
+  {
+    title: "Pull you back in",
+    fileName: "Pull you back in.mp3",
+    description: "Alternative take with a slightly different naming/version mix.",
+  },
+  {
+    title: "Stay here tonight",
+    fileName: "Stay here tonight.mp3",
+    description: "Late-night track with an intimate, slower character.",
   },
 ];
 
@@ -257,6 +301,32 @@ export default function Home() {
           </div>
           {issOpen && <IssMap />}
         </motion.div>
+      </section>
+
+      <section className="relative z-10 border-t border-zinc-800/80 px-6 py-20 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-xs uppercase tracking-[0.34em] text-zinc-500 md:text-sm">
+              Music
+            </p>
+            <h3 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-100 md:text-5xl">
+              The Static Frames songs
+            </h3>
+            <p className="mt-4 max-w-3xl text-base leading-8 text-zinc-300 md:text-lg">
+              Listen to unreleased tracks directly in the browser and download the
+              files if you want to keep them.
+            </p>
+          </motion.div>
+
+          <div className="mt-8">
+            <MusicPlayer songs={songs} />
+          </div>
+        </div>
       </section>
 
       <section
