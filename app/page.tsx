@@ -11,7 +11,7 @@ const projects = [
     title: "Interactive Survival Game",
     description:
       "Browser-based survival game focused on resources, player states, and experimental gameplay systems.",
-    link: "https://survival.vercel.app",
+    link: "https://survival-self.vercel.app/",
     button: "Play Demo",
     image: "/images/game.png",
     status: "Live",
@@ -234,13 +234,22 @@ export default function Home() {
               className="group rounded-3xl border border-zinc-800 bg-zinc-950/65 p-5 backdrop-blur-md transition-colors hover:border-zinc-600 md:p-6"
             >
               <div className="relative mb-6 h-52 overflow-hidden rounded-2xl">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="object-cover transition duration-500 group-hover:scale-105"
-                />
+                {index === 0 ? (
+                  <iframe
+                    src="https://survival-self.vercel.app/"
+                    title={project.title}
+                    className="h-full w-full border-0"
+                    loading="lazy"
+                  />
+                ) : (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    className="object-cover transition duration-500 group-hover:scale-105"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
                 <span className="absolute left-4 top-4 rounded-full border border-zinc-600/70 bg-black/60 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-zinc-200">
                   {project.status}
