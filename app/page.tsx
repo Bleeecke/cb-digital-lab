@@ -82,6 +82,7 @@ const songs: Song[] = [
 export default function Home() {
   const [pointer, setPointer] = useState({ x: 50, y: 10 });
   const [issOpen, setIssOpen] = useState(false);
+  const [survivalLoaded, setSurvivalLoaded] = useState(false);
   const rafRef = useRef<number | null>(null);
   const mainRef = useRef<HTMLElement | null>(null);
 
@@ -235,12 +236,23 @@ export default function Home() {
             >
               <div className="relative mb-6 h-52 overflow-hidden rounded-2xl">
                 {index === 0 ? (
-                  <iframe
-                    src="https://survival-self.vercel.app/"
-                    title={project.title}
-                    className="h-full w-full border-0"
-                    loading="lazy"
-                  />
+                  <>
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      className="object-cover transition duration-500 group-hover:scale-105"
+                    />
+                    {survivalLoaded && (
+                      <iframe
+                        src="https://survival-self.vercel.app/"
+                        title={project.title}
+                        className="absolute inset-0 h-full w-full border-0 bg-transparent"
+                        loading="lazy"
+                      />
+                    )}
+                  </>
                 ) : (
                   <Image
                     src={project.image}
@@ -254,6 +266,15 @@ export default function Home() {
                 <span className="absolute left-4 top-4 rounded-full border border-zinc-600/70 bg-black/60 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-zinc-200">
                   {project.status}
                 </span>
+                {index === 0 && !survivalLoaded && (
+                  <button
+                    type="button"
+                    onClick={() => setSurvivalLoaded(true)}
+                    className="absolute inset-0 z-10 flex items-center justify-center bg-black/25 text-sm font-medium text-white backdrop-blur-[1px] transition-colors hover:bg-black/15"
+                  >
+                    Open live game
+                  </button>
+                )}
               </div>
               <h4 className="text-xl font-semibold text-zinc-100 md:text-2xl">
                 {project.title}
